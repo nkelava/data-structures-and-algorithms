@@ -1,3 +1,5 @@
+#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_NONSTDC_NO_DEPRECATE
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,7 +8,7 @@
 
 Dictionary create() {
 	Word* newDict = (Word*)malloc(sizeof(Word));
-	if (!newDict) return;
+	if (!newDict) return NULL;
 
 	newDict->word = NULL;
 	newDict->count = 0;
@@ -25,7 +27,7 @@ void add(Dictionary dict, char *str)
 		}
 		if (strcmp(dictPtr->next->word, str) > 0) {
 			Word *newWord = create();
-			newWord->word = _strdup(str);
+			newWord->word = strdup(str);
 			newWord->count = 1;
 			newWord->next = dictPtr->next;
 			dictPtr->next = newWord;
@@ -34,7 +36,7 @@ void add(Dictionary dict, char *str)
 	}
 
 	Word* newWord = create();
-	newWord->word = _strdup(str);
+	newWord->word = strdup(str);
 	newWord->count = 1;
 	newWord->next = dictPtr->next;
 	dictPtr->next = newWord;
@@ -43,7 +45,7 @@ void add(Dictionary dict, char *str)
 void print(Dictionary dict) {
 	Dictionary dictPtr = dict->next;
 
-	for (; dictPtr->next != NULL; dictPtr = dictPtr->next) {
+	for (; dictPtr != NULL; dictPtr = dictPtr->next) {
 		printf("Word: %s\nCount: %d\n\n", dictPtr->word, dictPtr->count);
 	}
 }

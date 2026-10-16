@@ -25,6 +25,7 @@ int readWord(FILE *fd, char *buffer)
 	} while(isalpha(c) || c == '\'');
 
 	*buffer = '\0';
+	return 1;
 }
 
 void fillTable(HashTable *dict)
@@ -43,7 +44,7 @@ void fillTable(HashTable *dict)
 	{
 		//printf("%s\n", buffer);
 		if(!Get(dict, buffer))
-			Insert(dict, _strdup(buffer));
+			Insert(dict, buffer);
 	}
 
 	fclose(fd);

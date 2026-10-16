@@ -18,12 +18,16 @@ void insert_element(Queue* que, Game* newElement, int parent)
 {
 	if (que->filled == QUELEN - 1) { return; }
 
+	Game* copy = (Game*)malloc(sizeof(Game));
+	if (copy == NULL) return;
+
 	if ((que->last) + 1 == QUELEN)
 		que->last = que->first;
 	else
 		(que->last)++;
-	newElement->parent = parent;
-	que->arr[que->last] = newElement;
+	*copy = *newElement;
+	copy->parent = parent;
+	que->arr[que->last] = copy;
 	(que->filled)++;
 }
 
@@ -47,7 +51,6 @@ int que_moves(Queue* que)
 	while (!game_won(&currentState))
 	{
 		Game possibleMoves[4];
-		if (!possibleMoves) return;
 
 		int movesMade = make_move(&currentState, possibleMoves);
 

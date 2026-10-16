@@ -1,4 +1,6 @@
-#pragma warning(disable : 4996) 
+#ifdef _MSC_VER
+#pragma warning(disable : 4996)
+#endif
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -15,7 +17,7 @@ int main()
 {
 	char str[] = "abcd1234";
 
-	printf("String: %s  strlen: %d  mystrlen: %d\n", str, strlen(str), mystrlen(str));
+	printf("String: %s  strlen: %d  mystrlen: %d\n", str, (int)strlen(str), mystrlen(str));
 
 	//mystrcpy
 	char dest[40], myDest[40], string[] = "defg5678";

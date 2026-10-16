@@ -19,15 +19,17 @@ These are my assignments for the university course *Data Structures and Algorith
 
 ## Running a project
 
-Each folder is a standalone program. The code was written in Visual Studio, and the STL files project includes its Visual Studio solution (`03-stl-files/stl-files.sln`).
+Each folder is a standalone program that builds on Windows, Linux and macOS.
 
-To build a project with GCC, compile all `.c` files in its folder. Projects that use `_strdup` (a Visual Studio function) need the `-D_strdup=strdup` flag:
+On Linux or macOS, compile all `.c` files in the folder with GCC or Clang:
 
 ```sh
 cd 08-binary-search-tree
-gcc *.c -D_strdup=strdup -o bst
+gcc *.c -o bst
 ./bst
 ```
+
+On Windows, add the folder's `.c` and `.h` files to an empty Visual Studio C project. The STL files project already includes its Visual Studio solution (`03-stl-files/stl-files.sln`).
 
 Run each program from inside its own folder so it can find its input files (`sample-binary.stl`, `liar.txt` and `big.txt`).
 

@@ -82,7 +82,7 @@ int partition(int* arr, int n) {
 		arr[0] = pivot;
 		if (pivot == arr[n/2])
 			arr[n/2] = temp;
-		if (pivot == arr[n-1])
+		else if (pivot == arr[n-1])
 			arr[n-1] = temp;
 	}
 
@@ -192,7 +192,7 @@ double measure(void(*sort)(int* arr, int n), int* arr, int n) {
 }
 
 
-double merge_measure(void(*sort)(int* arr, int n), int* arr, int l, int r) {
+double merge_measure(void(*sort)(int* arr, int l, int r), int* arr, int l, int r) {
 	clock_t start_time = clock();
 	sort(arr, l, r);
 	clock_t end_time = clock();

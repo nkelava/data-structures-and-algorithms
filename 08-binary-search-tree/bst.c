@@ -1,6 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
+#define _CRT_NONSTDC_NO_DEPRECATE
 #include <stdio.h>
-#include <malloc.h>
+#include <stdlib.h>
 #include <ctype.h>
 #include "bst.h"
 
@@ -14,7 +15,7 @@ BSTree create_node(char* word) {
 	BSTree newNode = (BSTree)malloc(sizeof(Node));
 	if (!newNode) return 0;
 
-	newNode->word = _strdup(word);
+	newNode->word = strdup(word);
 	newNode->right = NULL;
 	newNode->left = NULL;
 

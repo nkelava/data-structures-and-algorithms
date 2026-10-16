@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include <malloc.h>
+#define _CRT_NONSTDC_NO_DEPRECATE
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -40,7 +41,7 @@ HashElement* createElement(char* word) {
 	HashElement* newSlot = (HashElement*)malloc(sizeof(HashElement));
 	if (newSlot == NULL) return 0;
 
-	newSlot->word = _strdup(word);
+	newSlot->word = strdup(word);
 	newSlot->next = NULL;
 
 	return newSlot;
@@ -68,7 +69,10 @@ int Get(HashTable *ht, char *word)
 	// returns 0 or 1 depending on whether the word exists in the table
 	int key = hash(word) % ht->size;
 
-	return (ht->table[key] == NULL) ? 0 : 1;
+	for (HashElement* element = ht->table[key]; element != NULL; element = element->next)
+		if (strcmp(element->word, word) == 0)
+			return 1;
+	return 0;
 }
 
 void deleteElement(HashElement* element) {

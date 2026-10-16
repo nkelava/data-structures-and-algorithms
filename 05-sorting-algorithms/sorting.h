@@ -6,7 +6,7 @@
 #ifndef sorting_h
 #define sorting_h
 
-typedef enum { false, true } bool;
+#include <stdbool.h>
 extern bool choosePivot;
 extern int numMin;
 
@@ -19,8 +19,8 @@ int partition(int*, int);
 void quicksort(int*, int);
 void merge(int*, int, int, int);
 int* duplicate(int*, int);
-void merge_sort(int*, int);
+void merge_sort(int*, int, int);
 double measure(void(*)(int*, int), int*, int);
-double merge_measure(void(*)(int*, int), int*, int, int);
+double merge_measure(void(*)(int*, int, int), int*, int, int);
 
 #endif
