@@ -9,7 +9,7 @@
 
 HashTable *NewTable(int size)
 {
-	// kreira novu hash tablicu (alocira samu strukturu i niz pokazivaèa)
+	// creates a new hash table (allocates the structure itself and the array of pointers)
 	HashTable* newTable = (HashTable*)malloc(sizeof(HashTable));
 	if (newTable == NULL) return 0;
 	newTable->table =(HashElement**)malloc(size * sizeof(HashElement));
@@ -26,7 +26,7 @@ HashTable *NewTable(int size)
 
 unsigned int hash(char *word)
 {
-	// od kljuca generira hash kod
+	// generates a hash code from the key
 	unsigned int key = 0;
 	while(*word != '\0')
 	{
@@ -48,7 +48,7 @@ HashElement* createElement(char* word) {
 
 void Insert(HashTable *ht, char *word)
 {
-	// dodaje novu rijec u listu na odgovarajucem pretincu
+	// adds a new word to the list in the matching bucket
 	int key = hash(word) % ht->size;
 	
 	if (ht->table[key] == NULL)
@@ -65,7 +65,7 @@ void Insert(HashTable *ht, char *word)
 
 int Get(HashTable *ht, char *word)
 {
-	// vraca 0 ili 1 ovisno o tome da li rijec postoji u tablici
+	// returns 0 or 1 depending on whether the word exists in the table
 	int key = hash(word) % ht->size;
 
 	return (ht->table[key] == NULL) ? 0 : 1;
@@ -82,9 +82,9 @@ void deleteElement(HashElement* element) {
 
 void DeleteTable(HashTable *ht)
 {
-	// brise cijelu hash tablicu (liste na svim pretincima (rijec i element liste), pretince ...)
+	// deletes the whole hash table (the lists in all buckets (word and list element), the buckets ...)
 
-	//REKURZIVNO
+	//RECURSIVE
 	/*if (ht->size == 0) return;
 
 	deleteElement(ht->table[ht->size]);

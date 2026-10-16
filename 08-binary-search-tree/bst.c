@@ -6,7 +6,7 @@
 
 BSTree NewBSTree()
 {
-	// Novo prazno stablo
+	// New empty tree
 	return NULL;
 }
 
@@ -23,7 +23,7 @@ BSTree create_node(char* word) {
 
 void AddNode(BSTree* bst, char* word)
 {
-	// Rekurzivno se traži mjesto za novi èvor u stablu. Ako rijeè postoji u stablu, ne dodaje se. bst parametar je dvostruki pokazivaè.
+	// Recursively find the place for the new node in the tree. If the word already exists in the tree, it is not added. The bst parameter is a double pointer.
 	if (*bst == NULL) {
 		*bst = create_node(word);
 		return;
@@ -41,7 +41,7 @@ int max(int a, int b) {
 
 int BSTHeight(BSTree bst)
 {
-	// Rekurzivno se prolazi cijelo stablo da bi se pronašla najduža grana (visina stabla).
+	// Recursively traverse the whole tree to find the longest branch (the height of the tree).
 	if (bst == NULL) return 0;
 	
 	return 1 + max(BSTHeight(bst->left), BSTHeight(bst->right));
@@ -58,8 +58,8 @@ void PrintBSTree(BSTree bst)
 
 void SaveBSTree(BSTree bst, FILE* fd)
 {
-	// Snima rijeè po rijeè iz stabla u tekstualnu datoteku. Rijeèi su odvojene razmakom.
-	// Pre-order šetnja po stablu (trenutni èvor pa djeca)
+	// Save the tree to a text file word by word. Words are separated by a space.
+	// Pre-order traversal of the tree (current node, then children)
 	if (bst == NULL) return;
 
 	fputs(bst->word, fd);
@@ -70,8 +70,8 @@ void SaveBSTree(BSTree bst, FILE* fd)
 
 void DeleteBSTree(BSTree bst)
 {
-	// Briše stablo (string word i sam èvor) iz memorije.
-	// Post-order šetnja po stablu (prvo djeca pa trenutni èvor)
+	// Delete the tree (the word string and the node itself) from memory.
+	// Post-order traversal of the tree (children first, then the current node)
 	if (bst == NULL) return;
 
 	DeleteBSTree(bst->right);
@@ -83,8 +83,8 @@ void DeleteBSTree(BSTree bst)
 
 BSTree LoadBSTree(FILE* fd)
 {
-	// Uèitava rijeè po rijeè iz tekstualne datoteke i dodaje ih u stablo preko AddNode() funkcije.
-	// Rijeè duplicirati sa strdup().
+	// Read a text file word by word and add the words to the tree with the AddNode() function.
+	// Duplicate the word with strdup().
 
 	BSTree dict = NewBSTree();
 	int wordCount = 0;

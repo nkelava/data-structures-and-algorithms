@@ -39,7 +39,7 @@ int main()
 	char substr1[] = "efg", substr2[] = "aab";
 	char* p = strstr(dest, substr1), *myp = mystrstr(mystrcpy(myDest, "aaaab"), substr2);
 
-	printf("\nString: %s  Podstring: %s  strstr: %s  myString: %s  myPodstring: %s  mystrstr: %s\n", dest, substr1, p, myDest, substr2, myp);
+	printf("\nString: %s  Substring: %s  strstr: %s  myString: %s  mySubstring: %s  mystrstr: %s\n", dest, substr1, p, myDest, substr2, myp);
 
 	//reverse
 	printf("\nString: %s  reverse: %s\n", substr1, reverse(substr1, substr2));

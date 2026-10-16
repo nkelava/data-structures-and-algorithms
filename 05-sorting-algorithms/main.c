@@ -21,25 +21,25 @@ int main() {
 	for (i = 0; i < REPEAT; i++, size += STEP) {
 		choosePivot = false;
 		array = generate_array(size);
-		printf("Ne sortirani niz bez pivota [%d]: %.10f sec\n", size, measure(quicksort, array, size));
-		printf("Sortirani niz bez pivota [%d]: %.10f sec\n", size, measure(quicksort, array, size));
+		printf("Unsorted array without pivot [%d]: %.10f sec\n", size, measure(quicksort, array, size));
+		printf("Sorted array without pivot [%d]: %.10f sec\n", size, measure(quicksort, array, size));
 		free(array);
 
 		choosePivot = true, array = generate_array(size);
-		printf("Ne sortirani niz sa pivotom [%d]: %.10f sec\n", size, measure(quicksort, array, size));
-		printf("Sortirani niz sa  pivotom [%d]: %.10f sec\n\n", size, measure(quicksort, array, size));
+		printf("Unsorted array with pivot [%d]: %.10f sec\n", size, measure(quicksort, array, size));
+		printf("Sorted array with pivot [%d]: %.10f sec\n\n", size, measure(quicksort, array, size));
 		free(array);
 	}
 
 	for (i = 0, size = rand() % 100; i < 200; i += NUM_STEP, size += rand() % 40) {
 		array = generate_array(size);
-		printf("numMin[%d] sa pivotom [%d]: %.10f sec\n", numMin, size, measure(quicksort, array, size));
+		printf("numMin[%d] with pivot [%d]: %.10f sec\n", numMin, size, measure(quicksort, array, size));
 		free(array);
 	}
 
 	size = BEG_SIZE, array = generate_array(size);
-	printf("\n\nNe sortirani merge sort[%d]: %.5lf sec\n", size, merge_measure(merge_sort, array, 0, size-1));
-	printf("Sortirani merge sort[%d]: %.5lf sec\n", size, merge_measure(merge_sort, array, 0, size-1));
+	printf("\n\nUnsorted merge sort[%d]: %.5lf sec\n", size, merge_measure(merge_sort, array, 0, size-1));
+	printf("Sorted merge sort[%d]: %.5lf sec\n", size, merge_measure(merge_sort, array, 0, size-1));
 	free(array);
 
 	return 0;

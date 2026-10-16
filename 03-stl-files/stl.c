@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "stl.h"
 
-//Object3D* read_txt_stl_file(Object3D, FILE*); dodatno, 7 redova opisuje 1 trokut, izbrojimo sve redove -1 i podjelimo s 7 da dobijemo broj trokuta 
+//Object3D* read_txt_stl_file(Object3D, FILE*); extra: 7 lines describe 1 triangle, count all lines, subtract 1 and divide by 7 to get the number of triangles
 
 Object3D* read_bin_stl_file(char* fileName)
 {

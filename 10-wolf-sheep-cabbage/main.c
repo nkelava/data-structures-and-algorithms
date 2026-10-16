@@ -7,11 +7,11 @@
 
 int main(int argc, const char* argv[])
 {
-	/*rekurzivno*/
+	/*recursive*/
 	/*Game* new = new_game();
 	solve(new, 7);*/
 
-	//red
+	//queue
 	que_solve();
 return 0;
 }
