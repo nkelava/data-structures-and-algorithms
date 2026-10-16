@@ -52,7 +52,7 @@ void main()
 	printf("\nH = %d, N = %d\n", BSTHeight(bst), wc);
 
 	// Snimi i izbri�i
-	if ((fd = fopen("stablo.txt", "wt")) == NULL){
+	if ((fd = fopen("tree.txt", "wt")) == NULL){
 		printf("Error opening file for writing.\n");
 		return;
 	}
@@ -62,7 +62,7 @@ void main()
 	DeleteBSTree(bst);
 
 	// U�itaj stablo
-	if ((fd = fopen("stablo.txt", "rt")) == NULL){
+	if ((fd = fopen("tree.txt", "rt")) == NULL){
 		printf("Error opening file for reading.\n");
 		return;
 	}

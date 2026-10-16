@@ -5,7 +5,7 @@
 
 int main()
 {
-	Object3D *object = read_bin_stl_file("primjerbin.stl");
+	Object3D *object = read_bin_stl_file("sample-binary.stl");
 
 	/*print_object(object);*/
 	
